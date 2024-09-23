@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    canvas {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+  <body>
+    <canvas id="tutorial" width="300" height="300px">
+      你的浏览器不兼容canvas，请升级你的浏览器！
+    </canvas>
+    <script>
+      window.onload = function () {
+        // 1.拿到canvas的元素对象
+        let canvasEl = document.getElementById("tutorial");
+        if (!canvasEl.getContext) {
+          return;
+        }
+        // 2.拿到Canvas 渲染的上下文
+        // ctx: CanvasRenderingContext2D
+        // ctx是一个绘图的上下文：提供了绘图的指令，可以绘制各种图形（圆形，直线，椭圆...）
+        let ctx = canvasEl.getContext("2d");
+
+        ctx.save();
+        ctx.translate(100, 100); // 平移坐标系统
+        ctx.scale(2, 2); // 对坐标轴进行了放大（2倍）
+        ctx.translate(10, 0); // 10px -> 20px
+        ctx.fillRect(0, 0, 50, 50);
+
+        ctx.restore();
+      };
+    </script>
+  </body>
+</html>

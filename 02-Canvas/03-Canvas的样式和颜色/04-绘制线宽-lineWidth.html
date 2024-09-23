@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    canvas {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+  <body>
+    <canvas id="tutorial" width="300" height="300px">
+      你的浏览器不兼容canvas，请升级你的浏览器！
+    </canvas>
+    <script>
+      window.onload = function () {
+        // 1.拿到canvas的元素对象
+        let canvasEl = document.getElementById("tutorial");
+        if (!canvasEl.getContext) {
+          return;
+        }
+        let ctx = canvasEl.getContext("2d");
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(20, 20);
+        ctx.lineTo(20, 100);
+        ctx.stroke();
+      };
+    </script>
+  </body>
+</html>
