@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pie</title>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script type="module">
+      import { PieChart } from "./pieChart.js";
+      const myCanvas = document.querySelector("canvas");
+      const ctx = myCanvas.getContext("2d");
+      myCanvas.width = 500;
+      myCanvas.height = 340;
+      const myPieChart = new PieChart({
+        canvas: myCanvas,
+        seriesName: "fruit shop",
+        padding: 40,
+        data: {
+          Banana: 30,
+          Apple: 40,
+          Orange: 23,
+          Strawberry: 7,
+        },
+        colors: ["#5470C6", "#91CC75", "#fac858", "#ee6666"],
+        titleOptions: {
+          align: "center",
+          fill: "black",
+          font: {
+            weight: "bold",
+            size: "18px",
+            family: "Lato",
+          },
+        },
+      });
+
+      myPieChart.draw();
+    </script>
+  </body>
+</html>

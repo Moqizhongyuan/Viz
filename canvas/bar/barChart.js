@@ -31,7 +31,6 @@ class BarChart {
     const cx = clientX - this.canvas.offsetLeft;
     const cy = clientY - this.canvas.offsetTop + window.scrollY;
     this.hoverId = -1;
-    console.log(cx, cy, this.barInfo[0]);
     for (let i = 0; i < this.barInfo.length; i++) {
       const pos = this.barInfo[i];
       const { x, y, width, height } = pos;
@@ -171,11 +170,11 @@ class BarChart {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     // dom 渲染是否是第一次
     if (this.firstRender) {
-      this.drawTitle();
       this.drawLabels();
       this.drawLegend();
       this.firstRender = false;
     }
+    this.drawTitle();
     this.drawGridLines();
     this.drawBars();
     requestAnimationFrame(this.draw.bind(this));
