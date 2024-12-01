@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bar</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        margin: 50px auto;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      ul {
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 1rem;
+      }
+
+      li {
+        margin: 0.5rem 0;
+      }
+
+      legend {
+        margin: 0 auto;
+      }
+
+      #myCanvasWarp {
+        width: 500px;
+      }
+
+      #label-warp {
+        background: #fff;
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        box-shadow: 2px 2px 20px 2px #a3a3a3;
+        border-radius: 4px;
+        visibility: hidden;
+      }
+
+      .label-cir {
+        width: 12px;
+        height: 12px;
+        margin-right: 12px;
+        border-radius: 50%;
+      }
+
+      .label-name {
+        margin-right: 16px;
+      }
+
+      .label-common {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <legend for="myCanvas">Legend Text</legend>
+    <canvas></canvas>
+    <script type="module">
+      import { BarChart } from "./barChart.js";
+      const myCanvas = document.querySelector("canvas");
+      myCanvas.width = 500;
+      myCanvas.height = 500;
+      const ctx = myCanvas.getContext("2d");
+      const myBarchart = new BarChart({
+        canvas: myCanvas,
+        seriesName: "fruit shop",
+        padding: 30,
+        gridStep: 5,
+        gridColor: "black",
+        data: {
+          Banana: 16,
+          Apple: 12,
+          Orange: 20,
+          Strawberry: 3,
+        },
+        hoverColor: "red",
+        colors: ["#5470C6", "#91CC75", "#fac858", "#ee6666"],
+        titleOptions: {
+          align: "center",
+          fill: "black",
+          font: {
+            weight: "bold",
+            size: "18px",
+            family: "Lato",
+          },
+        },
+      });
+      myBarchart.draw();
+    </script>
+  </body>
+</html>
